@@ -4,6 +4,7 @@ machine:
 
 test:
   override:
+    - composer global require "fxp/composer-asset-plugin:~1.1.0"
     - ./init --env=Development --overwrite=All
     - touch common/config/config.yml
     - ./yii_test migrate
