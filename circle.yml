@@ -6,8 +6,9 @@ test:
   override:
     - ls vendor/
     - composer global require "fxp/composer-asset-plugin:~1.1.0"
-    - composer update --dev --prefer-dist --no-interaction
+    - composer update --prefer-dist --no-interaction
     - ./init --env=Development --overwrite=All
     - touch common/config/config.yml
+    - mv vendor/bower-asset vendor/bower
     - ./yii_test migrate
     - vendor/bin/codecept run
