@@ -1,3 +1,10 @@
 machine:
   php:
     version: 7.1.0
+
+test:
+  override:
+    - ./init --env=Development --overwrite=All
+    - touch common/config/config.yml
+    - ./yii_test migrate
+    - vendor/bin/codecept run
