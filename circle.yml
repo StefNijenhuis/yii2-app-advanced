@@ -4,9 +4,9 @@ machine:
 
 test:
   override:
-    #- mysql -e "CREATE USER 'travis'@'localhost'"
+    - mysql -e "CREATE USER 'travis'@'%'"
     - mysql -e 'CREATE DATABASE yii2advanced_test;'
-    #- mysql -e "GRANT ALL PRIVILEGES ON yii2advanced_test.* to 'travis'@'localhost';"
+    - mysql -e "GRANT ALL PRIVILEGES ON yii2advanced_test.* to 'travis'@'%';"
     - ls vendor/
     - composer global require "fxp/composer-asset-plugin:~1.1.0"
     - composer update --prefer-dist --no-interaction
