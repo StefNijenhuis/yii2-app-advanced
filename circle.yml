@@ -4,6 +4,7 @@ machine:
 
 test:
   override:
+    - mysql -e "CREATE USER 'travis'@'localhost'"
     - mysql -e 'CREATE DATABASE yii2advanced_test;'
     - ls vendor/
     - composer global require "fxp/composer-asset-plugin:~1.1.0"
@@ -11,5 +12,5 @@ test:
     - ./init --env=Development --overwrite=All
     - touch common/config/config.yml
     - mv vendor/bower-asset vendor/bower
-    - ./yii_test migrate
+    - ./yii_test migrate --interactive=0
     - vendor/bin/codecept run
